@@ -1,0 +1,34 @@
+I"Ÿ(function() {
+  var changeState, parentClass;
+
+  parentClass = "";
+
+  changeState = function(id, state) {
+    return alert(id + " Changed to " + state);
+  };
+
+  $(document).on("turbolinks:load", function() {
+    return $(".sortable").sortable({
+      revert: "100",
+      placeholder: 'drag-place-holder',
+      forcePlaceholderSize: true,
+      connectWith: ".sortable",
+      helper: function(event, element) {
+        return $(element).clone().addClass('dragging');
+      },
+      start: function(e, ui) {
+        ui.item.show().addClass('ghost');
+        return parentClass = ui.item.parent().attr("class");
+      },
+      stop: function(e, ui) {
+        ui.item.show().removeClass('ghost');
+        if (parentClass !== ui.item.parent().attr("class")) {
+          return changeState(ui.item.attr("id"), ui.item.parent().attr("class"));
+        }
+      },
+      cursor: 'move'
+    }).disableSelection;
+  });
+
+}).call(this);
+:ET

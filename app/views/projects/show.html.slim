@@ -1,0 +1,25 @@
+div class="col-centered col-sm-12"
+    div class="row container-fluid"
+        div class="panel"
+            div class="panel-body"
+                div class="col-xs-8"
+                    h2 style="padding: 0px; margin: 5px"
+                        = @project.name
+                div class="col-xs-4 text-right"
+                    => link_to edit_project_path(@project), class: "btn btn-primary btn-lg btn-circle" do
+                        span class="fa fa-edit fa-lg"
+
+                    = link_to project_path(@project), method: :delete, data: { confirm: 'Tem certeza que deseja excluir o bug?' }, class: "btn btn-danger btn-lg btn-circle" do
+                        span class="fa fa-trash fa-lg"
+    div class="row container-fluid"
+        div class="panel panel-default"
+            div class="panel-body"
+                div class="row"
+
+                    = render "bug_container", { project: @project, title: "Novos", state: "Novo", css: "bug-new" }
+                    = render "bug_container", { project: @project, title: "Em Progresso", state: "Em Progresso", css: "bug-in-progress" }
+                    = render "bug_container", { project: @project, title: "Concluídos", state: "Concluído", css: "bug-done" }
+
+                div class="row"
+                    div class="col-sm-12"
+                        = link_to "Voltar", :back, class: "btn btn-default"

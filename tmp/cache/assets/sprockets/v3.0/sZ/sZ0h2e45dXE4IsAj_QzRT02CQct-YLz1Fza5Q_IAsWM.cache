@@ -1,0 +1,7 @@
+I"j(function() {
+  $("li").removeClass("active");
+
+  $("#projects").addClass("active");
+
+}).call(this);
+:ET

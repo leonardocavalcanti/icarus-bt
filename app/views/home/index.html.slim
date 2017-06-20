@@ -1,0 +1,18 @@
+div class="col-md-6 col-sd-12"
+    div class="panel panel-default"
+        div class="panel-body"
+            h3 class="panel-title" Meus projetos
+            - @projects.each do |project|
+                = render "projects/project", { project: project }
+
+div class="col-md-6 col-sd-12"
+    div class="panel panel-default"
+        div class="panel-body"
+            h3 class="panel-title" Bugs atribuídos a mim
+            - @bugs.where(:state => "Novo").each do |bug|
+                = render "projects/bug", { bug: bug, css: "new" }
+            - @bugs.where(:state => "Em Progresso").each do |bug|
+                = render "projects/bug", { bug: bug, css: "in-progress" }
+            - @bugs.where(:state => "Concluído").each do |bug|
+                = render "projects/bug", { bug: bug, css: "done" }
+            

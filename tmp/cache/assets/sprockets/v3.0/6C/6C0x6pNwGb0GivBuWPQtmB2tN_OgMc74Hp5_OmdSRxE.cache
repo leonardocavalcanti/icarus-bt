@@ -1,0 +1,12 @@
+I"d(function() {
+  $(document).on("turbolinks:load", function() {
+    $(".project").click(function() {
+      return window.location = "/projects/" + ($(this).attr('id'));
+    });
+    return $(".bug").click(function() {
+      return window.location = "/projects/" + ($(this).attr('project_id')) + "/bugs/" + ($(this).attr('id'));
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,3 @@
+pt-BR:
+  notifier:
+    new_bug: "*%{author}* criou o bug <a href='%{bug_url}'>%{bug_id} - %{bug_description}</a>, no projeto <a href='%{project_url}'>%{project_name}</a>"

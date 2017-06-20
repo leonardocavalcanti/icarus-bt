@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  steps: MyString
+  project: one
+  user: one
+
+two:
+  description: MyString
+  steps: MyString
+  project: two
+  user: two

@@ -1,0 +1,24 @@
+div class="col-centered col-sm-12"
+    div class="panel panel-default"
+        div class="panel-body"
+            h3 class="panel-title" Projetos
+            - unless @projects.empty?
+                table class="table  table-hover"
+                    thead
+                        tr
+                            th Nome
+                            th
+                    tbody
+                        - @projects.each do |project|
+                            tr
+                                td class="col-xs-10" = link_to project.name, project_path(project)
+                                td  class="col-xs-2"
+                                    => link_to edit_project_path(project), class: "btn btn-primary btn-sm" do
+                                        span class="fa fa-edit fa-lg"
+
+                                    = link_to project_path(project), method: :delete, data: { confirm: 'Tem certeza que deseja excluir o projeto?' }, class: "btn btn-danger btn-sm" do
+                                        span class="fa fa-trash fa-lg"
+            - else
+                h4 Nenhum projeto encontrado
+
+            a href="/projects/new" class="btn btn-primary" Novo

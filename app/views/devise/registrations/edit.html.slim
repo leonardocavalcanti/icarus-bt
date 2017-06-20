@@ -1,0 +1,36 @@
+div class="col-centered col-sm-12"
+    div class="panel panel-default"
+        div class="panel-body"
+          h3 class="panel-title" Editar minha conta
+
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            = devise_error_messages!
+
+            div class="form-group has-feedback"
+                = f.text_field :name, required: true, autofocus: true, class: "form-control", placeholder: "Nome"
+                span class="fa fa-user form-control-feedback text-muted"
+
+            div class="form-group has-feedback"
+                = f.email_field :email, required: true, autofocus: true, class: "form-control", placeholder: "Email" 
+                span class="fa fa-envelope form-control-feedback text-muted"
+
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              div Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+            div class="form-group has-feedback"
+              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha" + (@minimum_password_length ? " (mínimo de " + @minimum_password_length.to_s + "  caracteres, deixe em branco caso não deseje alterá-la)" : "") 
+              span class="fa fa-lock form-control-feedback text-muted"
+
+            div class="form-group has-feedback"
+              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirme sua senha" 
+              span class="fa fa-lock form-control-feedback text-muted"
+
+            div class="form-group has-feedback"
+              = f.password_field :current_password, required: true, autocomplete: "off", class: "form-control", placeholder: "Senha atual (necessária para atualizção dos dados de sua conta)" 
+              span class="fa fa-lock form-control-feedback text-muted"
+
+            div class="form-group"
+              => f.submit "Salvar", class: "btn btn-primary"
+              => link_to "Cancelar", projects_path, class: "btn btn-default"
+
+          => button_to "Excluir minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "btn btn-danger"

@@ -1,0 +1,16 @@
+= form_for [@bug.project, @bug] do |f|
+
+    div class="form-group has-feedback"
+        = f.text_field :description, required: true, autofocus: true, class: "form-control", placeholder: "Descrição"
+
+    div class="form-group has-feedback"
+        = f.text_area :steps, required: true, class: "form-control", placeholder: "Passos para reprodução"
+
+    div class="form-group has-feedback"
+        = f.select :user_id, User.all.collect {|u| [ u.name, u.id ] }, { include_blank: "Selecione o Responsável" }, { class: "form-control" }
+
+    div class="form-group has-feedback"
+        = f.select :state, [["Novo"], ["Em Progresso"], ["Concluído"]], { include_blank: "Selecione a Situação", selected: @state ? @state : @bug.state }, { class: "form-control" }
+
+    => f.submit "Salvar", class: "btn btn-primary"
+    = link_to "Cancelar", project_path(@bug.project), class: "btn btn-default"

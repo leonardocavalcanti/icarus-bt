@@ -1,0 +1,13 @@
+div class="col-sm-4"
+    div class="panel panel-default sortable-wrapper"
+        div class="panel-heading"
+            div class="container-fluid"
+                div class="col-xs-8"
+                    h3 class="panel-title" = title
+                div class="col-xs-4 text-right"
+                    => link_to new_project_bug_path(state: state, project_id: @project.id), class: "btn btn-default btn-sm btn-circle" do
+                        span class="fa fa-plus fa-lg"
+
+        div class="panel-body #{css} container-fluid sortable" state="#{state}"
+            - @project.bugs.where(:state => state).each do |bug|
+                = render "bug", { bug: bug, css: nil }

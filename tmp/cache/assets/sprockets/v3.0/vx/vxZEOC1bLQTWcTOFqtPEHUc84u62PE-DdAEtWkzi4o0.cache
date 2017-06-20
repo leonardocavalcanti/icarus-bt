@@ -1,0 +1,38 @@
+I"Á(function() {
+  var changeState, state;
+
+  state = "";
+
+  changeState = function(id, state) {
+    return $.post('/bugs/change_state', {
+      id: id,
+      state: state
+    });
+  };
+
+  $(document).on("turbolinks:load", function() {
+    return $(".sortable").sortable({
+      revert: "100",
+      placeholder: 'drag-place-holder',
+      forcePlaceholderSize: true,
+      connectWith: ".sortable",
+      cursor: "move",
+      helper: function(event, element) {
+        return $(element).clone().addClass('dragging');
+      },
+      start: function(e, ui) {
+        ui.item.show().addClass('ghost');
+        return state = ui.item.parent().attr("state");
+      },
+      stop: function(e, ui) {
+        ui.item.show().removeClass('ghost');
+        if (state !== ui.item.parent().attr("state")) {
+          return changeState(ui.item.attr("id"), ui.item.parent().attr("state"));
+        }
+      },
+      cursor: 'move'
+    }).disableSelection;
+  });
+
+}).call(this);
+:ET

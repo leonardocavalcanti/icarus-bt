@@ -1,0 +1,19 @@
+div class="col-centered col-sm-12"
+    div class="panel panel-default"
+        div class="panel-body"
+            h3 class="panel-title" = @bug.description
+            div 
+                b> Passos para reprodução:
+                = @bug.steps
+            div 
+                b> Projeto:
+                = @bug.steps
+            div 
+                b> Responsável:
+                - unless @bug.user == nil
+                    = @bug.user.name
+            div 
+                b> Situação:
+                = @bug.state
+            div style="padding-top: 10px"
+                = link_to "Voltar", :back, class: "btn btn-default"

@@ -1,0 +1,10 @@
+div class="panel #{css}" project_id="#{bug.project.id}" id="#{bug.id}"
+    div class="panel-body"
+        div class="col-xs-8 bug" project_id="#{bug.project.id}" id="#{bug.id}"
+            = bug.description
+        div class="col-xs-4 text-right"
+            => link_to edit_project_bug_path(bug.id, project_id: bug.project.id), class: "btn btn-primary btn-sm btn-circle" do
+                span class="fa fa-edit fa-lg"
+
+            = link_to project_bug_path(bug.id, project_id: bug.project.id), method: :delete, data: { confirm: 'Tem certeza que deseja excluir o bug?' }, class: "btn btn-danger btn-sm btn-circle" do
+                span class="fa fa-trash fa-lg"

@@ -1,0 +1,35 @@
+I"\(function() {
+  var ready;
+
+  ready = function() {
+    return $(".sortable").sortable({
+      revert: "100",
+      placeholder: 'drag-place-holder',
+      forcePlaceholderSize: true,
+      connectWith: ".sortable",
+      helper: function(event, element) {
+        return $(element).clone().addClass('dragging');
+      },
+      start: function(e, ui) {
+        var parentClass;
+        ui.item.show().addClass('ghost');
+        return parentClass = ui.item.parent().attr("class");
+      },
+      stop: function(e, ui) {
+        ui.item.show().removeClass('ghost');
+        if (parentClass !== ui.item.parent().attr("class")) {
+          return alert("Changed");
+        }
+      },
+      cursor: 'move'
+    }).disableSelection;
+  };
+
+  $(document).ready(ready);
+
+  $(document).on('page:load', ready);
+
+  $(document).on('turbolinks:load', ready);
+
+}).call(this);
+:ET

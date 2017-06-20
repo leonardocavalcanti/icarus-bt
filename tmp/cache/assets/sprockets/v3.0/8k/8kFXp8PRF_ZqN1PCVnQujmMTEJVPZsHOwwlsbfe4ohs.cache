@@ -1,0 +1,22 @@
+I"$(function() {
+  $(function() {
+    return $(".sortable").sortable({
+      revert: true,
+      placeholder: 'drag-place-holder',
+      forcePlaceholderSize: true,
+      connectWith: ".sortable",
+      helper: function(event, element) {
+        return $(element).clone().addClass('dragging');
+      },
+      start: function(e, ui) {
+        return ui.item.show().addClass('ghost');
+      },
+      stop: function(e, ui) {
+        return ui.item.show().removeClass('ghost');
+      },
+      cursor: 'move'
+    }).disableSelection;
+  });
+
+}).call(this);
+:ET

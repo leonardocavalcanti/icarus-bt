@@ -1,0 +1,9 @@
+I"Í(function() {
+  $(document).on("turbolinks:load", function() {
+    return $(".project").click(function() {
+      return window.location = "/projects/" + ($(this).attr('id'));
+    });
+  });
+
+}).call(this);
+:ET
