@@ -8,6 +8,5 @@ Bundler.require(*Rails.groups)
 
 module Icarus
   class Application < Rails::Application
-    config.i18n.default_locale = :pt-BR
   end
 end
