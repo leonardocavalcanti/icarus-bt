@@ -48,10 +48,6 @@ html
                       li = link_to "Sair", destroy_user_session_path, method: :delete
 
       div class="row"
-          - if flash[:alert]
-            p class="flash-error" #{flash[:alert]}
-          - if flash[:notice] 
-            p class="flash-notice" #{flash[:notice]}
           = yield
 
     - else
