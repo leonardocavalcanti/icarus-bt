@@ -31,6 +31,6 @@ div class="col-centered col-sm-12"
 
             div class="form-group"
               => f.submit "Salvar", class: "btn btn-primary"
-              => link_to "Cancelar", projects_path, class: "btn btn-default"
+              => link_to "Cancelar", :back, class: "btn btn-default"
 
           => button_to "Excluir minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "btn btn-danger"
