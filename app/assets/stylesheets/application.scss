@@ -77,6 +77,16 @@ body {
     padding: 0;
 }
 
+.bug-attribution {
+    display: none;
+}
+
+.bug-new > .panel > .panel-body >  .bug-attribution,
+.bug-in-progress > .panel > .panel-body > .bug-attribution,
+.bug-done > .panel > .panel-body > .bug-attribution {
+    display: block !important;
+}
+
 .bug-new > .panel,
 .bug-in-progress > .panel,
 .bug-done > .panel {

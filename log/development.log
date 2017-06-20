@@ -18753,3 +18753,634 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 870ms (Views: 841.8ms | ActiveRecord: 1.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-06-20 15:51:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 79ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-20 15:51:20 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/application
+  Rendered devise/sessions/new.html.slim within layouts/application (315.7ms)
+Completed 200 OK in 11496ms (Views: 11435.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2017-06-20 15:53:03 -0300
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/passwords/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 1862ms (Views: 1795.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at 2017-06-20 15:53:08 -0300
+Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"16fZ9q9a4wo5JczmssJWu3P51naDkTmYzn6QCBf+XQPhPh8ZGQq5iVqzhUjVNPmqbihQZRkxkJ1Ed6WFKfuA0A==", "user"=>{"email"=>"leonardo.cavalcanti91@hotmail.com"}, "commit"=>"Recuperar senha"}
+  [1m[36mUser Load (19.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "leonardo.cavalcanti91@hotmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."reset_password_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["reset_password_token", "7cc2cc6b25cb01f5e7cc7b358dda1a50608efd7b92ced114a4da3f12370279fd"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = ?, "reset_password_sent_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["reset_password_token", "7cc2cc6b25cb01f5e7cc7b358dda1a50608efd7b92ced114a4da3f12370279fd"], ["reset_password_sent_at", "2017-06-20 18:53:08.833944"], ["updated_at", "2017-06-20 18:53:08.852956"], ["id", 4]]
+  [1m[35m (150.3ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (53.6ms)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 412.4ms
+Completed 500 Internal Server Error in 3192ms (ActiveRecord: 172.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `host' for nil:NilClass):
+    2: 
+    3: <p>Someone has requested a link to change your password. You can do this through the link below.</p>
+    4: 
+    5: <p><%= link_to 'Change my password', edit_password_url(@resource, reset_password_token: @token, :host => request.host) %></p>
+    6: 
+    7: <p>If you didn't request this, please ignore this email.</p>
+    8: <p>Your password won't change until you access the link above and create a new one.</p>
+  
+app/views/devise/mailer/reset_password_instructions.html.erb:5:in `_app_views_devise_mailer_reset_password_instructions_html_erb___817732465_108182400'
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.5ms)
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (3059.0ms)
+Started POST "/users/password" for 127.0.0.1 at 2017-06-20 16:00:40 -0300
+Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YPsZh3odz47vSNeBX3+RFtLP8GDqlyJcgbveqmcwGpd/xNRNkBOrg88ckq/0nXNvclpoC0+aQFSvKHPXwsW8uw==", "user"=>{"email"=>"leonardo.cavalcanti91@hotmail.com"}, "commit"=>"Recuperar senha"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "leonardo.cavalcanti91@hotmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."reset_password_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["reset_password_token", "73b4c8a78bc90638e621ca5e967552701a79b5c2e37fab306c1e98ea785a5a65"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (25.0ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = ?, "reset_password_sent_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["reset_password_token", "73b4c8a78bc90638e621ca5e967552701a79b5c2e37fab306c1e98ea785a5a65"], ["reset_password_sent_at", "2017-06-20 19:00:41.038726"], ["updated_at", "2017-06-20 19:00:41.041729"], ["id", 4]]
+  [1m[35m (199.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (2.0ms)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 1276.5ms
+Sent mail to leonardo.cavalcanti91@hotmail.com (2388.5ms)
+Date: Tue, 20 Jun 2017 16:00:42 -0300
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: leonardo.cavalcanti91@hotmail.com
+Message-ID: <594970da9cea3_3acc2ed649054817@DESKTOP-87JOEAS.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello leonardo.cavalcanti91@hotmail.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="http://localhost:3000/users/password/edit?reset_password_token=Ar8KfUe71M_2fpyy1QRR">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 4108ms (ActiveRecord: 225.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-20 16:00:45 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/application
+  Rendered devise/sessions/new.html.slim within layouts/application (11.0ms)
+Completed 200 OK in 1923ms (Views: 1920.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-06-20 16:37:28 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d/qXVaFYOdgil94pCZPpeuEXZ3ZQcW8sExsJV2JyNopoxVqfS1Zd1QLDmweicQsDQYL/HfV8DSQ9iKQqx4eQpg==", "user"=>{"email"=>"leonardo.cavalcanti91@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "leonardo.cavalcanti91@hotmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-06-20 19:37:28.365811"], ["last_sign_in_at", "2017-06-20 00:53:13.971831"], ["sign_in_count", 4], ["updated_at", "2017-06-20 19:37:28.369330"], ["id", 4]]
+  [1m[35m (115.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 534ms (ActiveRecord: 119.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-20 16:37:28 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering home/index.html.slim within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bugs" WHERE "bugs"."project_id" = ?[0m  [["project_id", 5]]
+  Rendered projects/_project.html.slim (168.1ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Novo"]]
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Em Progresso"]]
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (197.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.5ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Concluído"]]
+  Rendered home/index.html.slim within layouts/application (524.7ms)
+Completed 200 OK in 4079ms (Views: 3962.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:37:58 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (136.8ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (127.2ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (128.7ms)
+  Rendered projects/show.html.slim within layouts/application (498.0ms)
+Completed 200 OK in 1370ms (Views: 1315.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:40:06 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (147.4ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.3ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug_container.html.slim (148.7ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (132.5ms)
+  Rendered projects/show.html.slim within layouts/application (504.2ms)
+Completed 200 OK in 1338ms (Views: 1307.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:41:33 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.5ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (139.6ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug_container.html.slim (138.1ms)
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.4ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (127.4ms)
+  Rendered projects/show.html.slim within layouts/application (475.2ms)
+Completed 200 OK in 1276ms (Views: 1252.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:42:04 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (143.2ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug_container.html.slim (137.8ms)
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (127.4ms)
+  Rendered projects/show.html.slim within layouts/application (478.0ms)
+Completed 200 OK in 1274ms (Views: 1243.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:43:14 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (137.1ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.7ms)
+  Rendered projects/_bug_container.html.slim (139.3ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (122.6ms)
+  Rendered projects/show.html.slim within layouts/application (467.3ms)
+Completed 200 OK in 1270ms (Views: 1244.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:48:43 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (30.0ms)
+  Rendered projects/_bug_container.html.slim (61.7ms)
+  Rendered projects/show.html.slim within layouts/application (92.8ms)
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (c:/Projects/icarus-bt/app/views/projects/_bug.html.slim:13: syntax error, unexpected keyword_do_block
+; _slim_controls3 = bug.user != nil ? do; 
+                                        ^
+c:/Projects/icarus-bt/app/views/projects/_bug.html.slim:18: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/projects/_bug.html.slim:13: syntax error, unexpected keyword_do_block
+app/views/projects/_bug.html.slim:18: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/projects/_bug_container.html.slim:13:in `block in _app_views_projects__bug_container_html_slim___1058991924_102060228'
+app/views/projects/_bug_container.html.slim:12:in `_app_views_projects__bug_container_html_slim___1058991924_102060228'
+app/views/projects/show.html.slim:19:in `_app_views_projects_show_html_slim___1008050349_102733032'
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (1463.7ms)
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:49:42 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (6.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (142.4ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.8ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.1ms)
+  Rendered projects/_bug_container.html.slim (141.1ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (2.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (126.9ms)
+  Rendered projects/show.html.slim within layouts/application (479.5ms)
+Completed 200 OK in 1270ms (Views: 1244.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2017-06-20 16:49:51 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering home/index.html.slim within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bugs" WHERE "bugs"."project_id" = ?[0m  [["project_id", 5]]
+  Rendered projects/_project.html.slim (6.5ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Novo"]]
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Em Progresso"]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (12.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (6.5ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Concluído"]]
+  Rendered home/index.html.slim within layouts/application (98.6ms)
+Completed 200 OK in 932ms (Views: 900.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2017-06-20 16:49:59 -0300
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering projects/index.html.slim within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects"[0m
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.slim within layouts/application (12.0ms)
+Completed 200 OK in 893ms (Views: 833.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:50:02 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (13.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (1260.9ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.0ms)
+  Rendered projects/_bug.html.slim (2.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  Rendered projects/_bug_container.html.slim (147.1ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (129.1ms)
+  Rendered projects/show.html.slim within layouts/application (1651.0ms)
+Completed 200 OK in 2703ms (Views: 2613.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:50:16 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (10.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (278.7ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (6.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (973.7ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.0ms)
+  Rendered projects/_bug_container.html.slim (586.4ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (125.1ms)
+  Rendered projects/show.html.slim within layouts/application (1896.9ms)
+Completed 200 OK in 2881ms (Views: 2854.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:52:09 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (20.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (5.5ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (360.3ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (288.7ms)
+  Rendered projects/_bug.html.slim (1.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (22.5ms)
+  Rendered projects/_bug.html.slim (1.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (89.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.5ms)
+  Rendered projects/_bug_container.html.slim (967.7ms)
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (1.5ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (147.6ms)
+  Rendered projects/show.html.slim within layouts/application (1589.1ms)
+Completed 200 OK in 17505ms (Views: 17440.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:52:37 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.8ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (137.9ms)
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.2ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug_container.html.slim (136.5ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (2.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug_container.html.slim (387.8ms)
+  Rendered projects/show.html.slim within layouts/application (738.5ms)
+Completed 200 OK in 12187ms (Views: 12160.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2017-06-20 16:52:53 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering home/index.html.slim within layouts/application
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bugs" WHERE "bugs"."project_id" = ?[0m  [["project_id", 5]]
+  Rendered projects/_project.html.slim (7.0ms)
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Novo"]]
+  [1m[36mBug Load (0.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Em Progresso"]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (11.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (4.0ms)
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."user_id" = 4 AND "bugs"."state" = ?[0m  [["state", "Concluído"]]
+  Rendered home/index.html.slim within layouts/application (100.5ms)
+Completed 200 OK in 2002ms (Views: 1968.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2017-06-20 16:53:44 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering projects/show.html.slim within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Novo"]]
+  Rendered projects/_bug.html.slim (5.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (0.5ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug_container.html.slim (140.0ms)
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Em Progresso"]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (3.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered projects/_bug.html.slim (2.5ms)
+  Rendered projects/_bug_container.html.slim (143.1ms)
+  [1m[36mBug Load (1.0ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = ? AND "bugs"."state" = ?[0m  [["project_id", 5], ["state", "Concluído"]]
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug.html.slim (1.0ms)
+  Rendered projects/_bug.html.slim (0.0ms)
+  Rendered projects/_bug_container.html.slim (126.6ms)
+  Rendered projects/show.html.slim within layouts/application (484.0ms)
+Completed 200 OK in 13335ms (Views: 13306.5ms | ActiveRecord: 4.5ms)
+
+

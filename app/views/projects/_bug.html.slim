@@ -8,3 +8,10 @@ div class="panel #{css}" project_id="#{bug.project.id}" id="#{bug.id}"
 
             = link_to project_bug_path(bug.id, project_id: bug.project.id), method: :delete, data: { confirm: 'Tem certeza que deseja excluir o bug?' }, class: "btn btn-default btn-sm btn-circle" do
                 span class="fa fa-trash fa-lg"
+        div class="col-xs-12 bug-attribution"
+            em 
+                -if bug.user != nil
+                    | Atribuído à <strong>#{bug.user.name}</strong>
+                - else
+                    | Sem atribuição
+        
