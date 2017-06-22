@@ -3,4 +3,4 @@ div class="panel project" id="#{project.id}"
         div class="col-xs-8"
             = project.name
         div class="col-xs-4 text-right"
-            <span class="badge">#{project.bugs.count} Bugs</span>
+            span class="badge" = pluralize(project.bugs.count, "Bug")
