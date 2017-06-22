@@ -86,5 +86,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # slack-notifier hook URL
-  config.slack_notifier.hook_url = ENV['SLACK_WEBHOOK_URL']
+  config.slack_webhook_url = ENV['SLACK_WEBHOOK_URL']
 end
