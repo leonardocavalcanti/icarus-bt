@@ -84,4 +84,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # slack-notifier hook URL
+  config.slack_notifier.hook_url = ENV['SLACK_WEBHOOK_URL']
 end
